@@ -7,7 +7,7 @@ It currently consists of four modules:
 
 - `model.rs`: Consists of structs, that represent your internal data representation.
 - `view.rs`: Consists of structs, that define how the data is represented to the outside world. In a server context,
-  this is the json comping in via a `POST`,`PATCH`, or returned by a `GET`. Your view gets transformed into your models
+  this is the json incoming via a `POST`,`PATCH`, or getting returned by a e.g. `GET`. Your view gets transformed into your models
   and vice versa.
 - `controller.rs`: The handlers, called from the Axum router and handling the logic. Here you can extract the json (
   view)
@@ -19,7 +19,7 @@ It currently consists of four modules:
 In a real world scenario you would have a real database and not just a hashmap.
 But for our learning purpose that will suffice.
 
-If you are fast enough - you can exchange it with an e.g. `SQlite` database (have a look [here](https://docs.rs/sqlx/latest/sqlx/))
+If you are fast enough - you can exchange it with an e.g. `SQlite` database (have a look [here](https://docs.rs/sqlx/latest/sqlx/)).
 
 ## Building
 
@@ -28,3 +28,15 @@ To build the solution, just type in `cargo build`, as you should know by now.
 ## Running
 
 To run the webserver, which offers its endpoints in `127.0.0.1:3000`, you can just type in `cargo run`.
+The starting endpoint could be fetched via
+
+```sh
+curl -i -X GET "Content-Type: application/json" http://localhost:3000/some-route/42
+```
+
+which should return a 
+```
+HTTP/1.1 404 Not Found
+```
+
+in the beginning, as you don't have any data stored yet.
