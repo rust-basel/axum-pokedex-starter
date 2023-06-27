@@ -1,9 +1,11 @@
 mod controller;
 mod model;
+mod view;
 
 use controller::SomeController;
 use std::collections::HashMap;
 
+use crate::model::SomeModel;
 use axum::routing::get;
 use axum::Router;
 use std::net::SocketAddr;
@@ -20,7 +22,7 @@ async fn main() {
 }
 
 fn app() -> Router {
-    let hash_map = HashMap::<String, String>::new(); // <- adjust to your needs
+    let hash_map = HashMap::<String, SomeModel>::new(); // <- adjust to your needs
     let thread_safe_hash_map = Arc::new(Mutex::new(hash_map));
     let database = thread_safe_hash_map;
 
