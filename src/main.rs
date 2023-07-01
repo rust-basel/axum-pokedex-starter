@@ -22,7 +22,16 @@ async fn main() {
 }
 
 fn app() -> Router {
-    let hash_map = HashMap::<String, SomeModel>::new(); // <- adjust to your needs
+    let mut hash_map = HashMap::<String, SomeModel>::new(); // <- adjust to your needs
+
+    // insert some initial state:
+    hash_map.insert(
+        "42".to_string(),
+        SomeModel {
+            field: "some_value".to_string(),
+        },
+    );
+
     let thread_safe_hash_map = Arc::new(Mutex::new(hash_map));
     let database = thread_safe_hash_map;
 

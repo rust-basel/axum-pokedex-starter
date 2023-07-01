@@ -35,8 +35,6 @@ curl -i -X GET "Content-Type: application/json" http://localhost:3000/some-route
 ```
 
 which should return a 
+```json
+{"some_field": "some_value"}
 ```
-HTTP/1.1 404 Not Found
-```
-
-in the beginning, as you don't have any data stored yet.
